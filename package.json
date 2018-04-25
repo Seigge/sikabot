@@ -1,0 +1,21 @@
+{
+  "name": "BOT",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.13",
+    "discord.js": "^11.3.2",
+    "ffmpeg-binaries": "^3.2.2-3",
+    "fluent-ffmpeg": "^2.1.2",
+    "opusscript": "0.0.6",
+    "request": "^2.85.0",
+    "ytdl-core": "^0.20.2"
+  }
+}
