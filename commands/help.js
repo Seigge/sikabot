@@ -1,22 +1,23 @@
 exports.run = (client, message, args) => {
- message.channel.send({embed: {
-  color: 3447003,
-  fields: [{
-        name: "Mball",
-        value: "Gives random answer on your question"
-      },
-      {
-        name: "Choice",
-        value: "Gets 1 item from the message"
-      },
-      {
-        name: "Gc",
-        value: "Clears last 50 bot mesages"
-      },
-      {
-		name: "Kill",
-		value: "Deal random damage to @mention"	
-	  }
-    ]
-}});
+ const fs = require ('fs');
+ var helpCommands = '';
+ fs.readdir("./commands/",(err, files) => {
+	if (err) return console.error(err);
+	
+	files.forEach(file => {
+    helpCommands += file.split(".js").join(" ")
+	
+ })
+ message.reply({embed: {
+        color: 3447003,
+        fields: [{
+         name: "Fields",
+         value: ` ${helpCommands}`
+      }]
+	  
+    }})
+})
+console.log(helpCommands);
+
+
 }
