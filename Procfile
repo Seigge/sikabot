@@ -1,1 +1,1 @@
-worker: node SikaBot.js
+worker: npm start
