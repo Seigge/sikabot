@@ -8,7 +8,7 @@ exports.run = (clients,message,args) =>
 
     if ( !message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS"))
         return message.reply("You dont have such permissions.");
-
+		return Promise.reject();
     if (message.mentions.members.size === 0)
         return message.reply("Укажите пользователя");
 

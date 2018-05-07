@@ -4,6 +4,7 @@ exports.run = (client, message, args) => {
 	
     if (!error && response.statusCode == 200) {
         arr = JSON.parse(response.body);
+		secondToLast = arr[arr.length-2];
         last = arr[arr.length-1];
     d = new Date(last["x"]*1000);
     message.reply("Пока заблокированно: " + last["y"].toLocaleString('ru'));

@@ -4,7 +4,7 @@ exports.run = (client, message, args) =>{
     message.reply(`Ваш кубик: ${yourDice+1} Кубик бота ${dice+1}`)
 	if(yourDice>dice){
 		message.reply('Вы выиграли');
-	}else if (yourDice === dice {
+	}else if (yourDice === dice) {
 		message.reply('Ничья');
 	}else {
 		message.reply('Вы проиграли');

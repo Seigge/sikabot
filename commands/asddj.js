@@ -29,12 +29,15 @@ exports.run = (client,message,args) => {
             if (message.member.voiceChannel) {
             message.member.voiceChannel.join()
               .then(connection => {
-				const stream = ytdl(song.toString(),{quality: 'highestaudio', })
-				ffmpeg(stream)
+				//const stream = ytdl(song.toString())
+			/*	ffmpeg(stream)
 				.noVideo()
-				//.save(`${__dsad}/${song}-${(Math.random() * 100000).toFixed(0)}.mp3`);
-			    broadcast.playStream(stream);
-             var dispatcher = connection.playBroadcast(broadcast).setBitrate(24);
+				 .save(`SAD/${song.length-20}-${(Math.random() * 100000).toFixed(0)}.mp3`)
+				 .on('end', function(stdout, stderr) {
+                 console.log('Transcoding succeeded !')
+				 }) */
+			   // broadcast.playStream(stream);
+             var dispatcher = connection.playFile('SAD/23-36202.mp3');
 				
               })
               .catch(console.log);
@@ -48,7 +51,7 @@ exports.run = (client,message,args) => {
             dispatcher.pause();
 	        break;
 		default : 
-			message.reply('No such subcommand.Use proper subcommand (Play,skip)')
+			message.reply('No such subcommand.Use proper subcommand (`${config.prefix}`Play,skip)')
 
     }
   
