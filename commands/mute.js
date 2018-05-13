@@ -1,10 +1,10 @@
 exports.run = (clients,message,args) =>
 {
-    const mutedMember = message.guild.roles.find("name", "Muted");
+    const mutedMember = message.guild.roles.find("name", "muted");
     const x = Number(args[1]);
 
     if (!mutedMember)
-        return console.log("The Mods role does not exist");
+        return console.log("The muted role does not exist");
 
     if ( !message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS"))
         return message.reply("You dont have such permissions.");
