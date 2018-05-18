@@ -5,6 +5,6 @@ exports.run = (client, message, args) => {
 	if (message.mentions.members.size === 0)
         return message.reply("Укажите пользователя");
 	
-	 message.channel.send(message.author.username +" наносит вам "+ dmg + " урона " +" "+ args[0]);
+	 message.channel.send(`${message.author.username} наносит вам ${dmg} урона ${args[0]}`);
 		
 }

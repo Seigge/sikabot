@@ -1,57 +1,79 @@
-exports.run = (client,message,args) => {
+exports.run = async (client,message,args) => {
     const ytdl = require('ytdl-core');
 	const opus = require('opusscript');
 	const ffmpeg   = require('fluent-ffmpeg');
+	
     if (!message.guild) return;
     if (!message.guild.available) console.error('No such guild is available');
-    if (args.length<1){
-        message.reply('Specify subcommand')
-        return;
-
+    if (!args[0]){ 
+	message.reply('Specify subcommand'); 
+        return ;
     }
-	var playList = [];
-    //TODO organize songs in playlist
- const broadcast = client.createVoiceBroadcast();
- broadcast.on("end", () => { 
-	broadcast.destroy();
-	message.member.voiceChannel.leave();
-	 console.log("Destroyed!");
-  });
-    switch (args[0]) {
-        case 'initialise':
-           message.guild.createChannel (`SikaBotDjChannel` , 'voice', [{
-                id: message.guild.id,
-                deny: ['SPEAK'],
-                alow: ['CONNECT']
-                }])
-			  .then()		
-              .catch(console.error);
-		       break; //TODO create a singleton of channel
+	const queue = new Map ();
+	const voiceChannel = message.member.voiceChannel;
+	switch(args[0]){
+		case 'play':
+		
+		const serverQueue = queue.get(message.guild.id);
+		if (!args[1]){
+			message.reply('Provide a proper YouTube link')
+		};
+		
+		const songInfo = await ytdl.getInfo(args[1]);
+		const song = {
+			title: songInfo.title ,
+			url: songInfo.video_url
+		}
+		if(!serverQueue){
+			const queueConstruct = {
+				textChannel: message.channel,
+				voiceChannel: voiceChannel,
+				connection: null,
+				songs: [],
+				volume: 5,
+				playing: true
+			};
+			queue.set(message.guild.id, queueConstruct);
+			
+			queueConstruct.songs.push(song);
+			message.reply(`✅**${song.title}** has been added to the queue!`)
+			try {
+			   var connection = await voiceChannel.join()
+			   queueConstruct.connection = connection;
+			   play(message.guild, queueConstruct.songs[0]);
+		    } catch(error) {
+				console.error("Smthing is wrong " + error);
+				queue.delete(message.guild.id);
+				voiceChannel.leave();
+				return message.reply("An error occured.")
+			}
+		} else {
+			serverQueue.songs.push(song);
+			return message.reply(`✅**${song.title}** has been added to the queue!`)	
+		}	
+		return undefined;
+		break;
 
-        case 'play':
-            let song = args[1];
-            if (args[1] == null) message.reply('Insert a song here');
-            if (message.member.voiceChannel) {
-            message.member.voiceChannel.join()
-              .then(connection => {
-				const stream = ytdl(song.toString())
-			    broadcast.playStream(stream);
-             const dispatcher = connection.playStream(stream).setVolume(0.2);
-				
-				
-              })
-              .catch(console.log);
-            } else {
-             message.reply('You need to join a voice channel first!');
-            } 
-            break;
-        case 'pause': //todo skip songs 
-            dispatcher.pause();
-	        break;
-		default : 
-			message.reply('No such subcommand.Use proper subcommand (`${config.prefix}`Play)')
-
-    }
-  
+		case 'skip': 
+		if(!serverQueue) return message.reply("There is nothing to skip");
+		serverQueue.connection.dispatcher.end();
+		break;
+	}
+	function play (guild, song) {
+		const serverQueue = queue.get(message.guild.id);
+		
+		if(!song){
+		   serverQueue.voiceChannel.leave();
+		   queue.delete(guild.id);
+		   return;
+		}	
+		const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
+		.on('end', () => {
+			serverQueue.songs.shift();
+			play(guild, serverQueue.songs[0])
+		})
+		.on('error', error => console.error(error));
+		dispatcher.setVolumeLogarithmic(5/5);
+	}
 	
 }
