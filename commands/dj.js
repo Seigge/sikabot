@@ -66,33 +66,37 @@ exports.run = async (client,message,args) => {
 		break;
 
 		case 'stop':
+		serverQueue =  queue.get(message.guild.id);
 		if (!voiceChannel) return message.reply("You are not in the voice channel");
 		serverQueue.songs = [];
 		serverQueue.connection.disconnect();
 		break;
 
 		case 'queue':
+		serverQueue =  queue.get(message.guild.id);
 		if(!serverQueue.songs) return message.reply("The queue is empty! Add more songs,please");
 		message.reply({embed: {
 			color: 3447003,
 			fields: [{
 			 name: "Fields",
-			 value: ` ${serverQueue.songs}`
+			 value: ` ${serverQueue.songs.map(song => `${song.title}`)}`
 		  }]
 		  
 		}})
 		break;
 	
 		case 'volume':
+		serverQueue =  queue.get(message.guild.id);
 		if (!voiceChannel) return message.reply("You are not in the voice channel");
 		if (!serverQueue) return message.reply("The queue is empty.");
-		if (!args[1]) return message.reply(`Current volume is : ${serverQueue.queueConstruct.volume}`);
+		if (!args[1]) return message.reply(`Current volume is : ${serverQueue.volume}`);
 		serverQueue.volume = args[1];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] /5);
 		return message.channel.send(`The volume is changed to ${args[1]}`);
 
 		case 'now':
-		if (!serverQueue.) return message.reply("There is nothing playing");
+		serverQueue =  queue.get(message.guild.id);
+		if (!serverQueue) return message.reply("There is nothing playing");
 		return message.reply(`Now playing: **${serverQueue.songs[0].title}**`);
 	}
 	function play (guild, song) {
