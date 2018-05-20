@@ -4,7 +4,7 @@ const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.cont
 if (!amount) return message.reply('Must specify an amount to delete!');
 if (!amount && !user) return message.reply('Must specify a user and amount, or just an amount, of messages to purge!');
 message.channel.fetchMessages({
- limit: amount,
+ limit: amount
 }).then((messages) => {
  if (user) {
  const filterBy = user ? user.id : Client.user.id;
