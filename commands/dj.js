@@ -79,7 +79,7 @@ exports.run = async (client,message,args) => {
 			color: 3447003,
 			fields: [{
 			 name: "Fields",
-			 value: ` ${serverQueue.songs.map(song => `${song.title}.join('\n')`)}`
+			 value: ` ${serverQueue.songs.map(song => `${song.title.join('\n')}`)}`
 		  }]
 		  
 		}})
