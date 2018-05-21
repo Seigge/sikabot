@@ -36,7 +36,7 @@ exports.run = async (client,message,args) => {
 				voiceChannel: voiceChannel,
 				connection: null,
 				songs: [],
-				volume: 5,
+				volume: 2,
 				playing: true
 			};
 			
@@ -78,7 +78,7 @@ exports.run = async (client,message,args) => {
 		message.reply({embed: {
 			color: 3447003,
 			fields: [{
-			 name: "Fields",
+			 name: "Songs queued: ",
 			 value: ` ${serverQueue.songs.map(song => `${song.title}`).join('\n')}`
 		  }]
 		  
