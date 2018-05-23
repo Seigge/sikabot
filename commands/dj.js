@@ -106,7 +106,7 @@ exports.run = async (client,message,args) => {
 		   queue.delete(guild.id);
 		   return;
 		}	
-		const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
+		const dispatcher = serverQueue.connection.playStream(ytdl(song.url,  {filter: 'audioonly' }))
 		.on('end', () => {
 			serverQueue.songs.shift();
 			setTimeout(function (){
@@ -115,7 +115,7 @@ exports.run = async (client,message,args) => {
 			
 		}) 
 		.on('error', error => console.error(error));
-		dispatcher.setVolumeLogarithmic(5/5);
+		dispatcher.setVolumeLogarithmic(serverQueue.volume/5);
 		
 		serverQueue.textChannel.send(`🎶 Start playing: **${song.title}**`);
 	}
