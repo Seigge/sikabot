@@ -1,4 +1,4 @@
-require ("../sikabot.js")
+//require ("../sikabot.js")
 exports.run = (client, message, args) => {
    
  console.log(currency);
