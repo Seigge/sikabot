@@ -1,5 +1,8 @@
 module.exports = (client, message) => {
-    // Ignore all bots
+   const {addCoin } = require("../Utils.js");
+  // Ignore all bots
+  addCoin(message.author.id, message.guild.id, 0.1);
+
     if (message.author.bot) return;
 
     // Ignore messages not starting with the prefix (in config.json)
@@ -12,11 +15,13 @@ module.exports = (client, message) => {
     // Grab the command data from the client.commands Enmap
     const cmd = client.commands.get(command);
     //TODO add currency support
-    // currency.add(message.author.id, 1);  
-
+     
+    
     // If that command doesn't exist, silently exit and do nothing
     if (!cmd) return;
 
     // Run the command
+
+   
     cmd.run(client, message, args);
   }

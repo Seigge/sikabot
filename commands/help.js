@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
 	if (err) return console.error(err);
 	
 	files.forEach(file => {
-    helpCommands += file.split(".js").join("/n")
+    helpCommands += file.split(".js").join("\n")
 	
  })
  message.reply({embed: {

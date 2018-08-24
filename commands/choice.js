@@ -1,8 +1,7 @@
 exports.run = (client, message, args) => {
-	 if ( args.length <= 1){
-	 message.channel.send("Error")
-	 }else{
+	 if ( args.length <= 1)
+	return message.channel.send("Error")
      let answ = Math.floor(Math.random()*args.length);
-	 message.channel.send(args[answ]).catch(console.error);
-	 }
+	 return message.channel.send(args[answ]).catch(console.error);
+	 
 }

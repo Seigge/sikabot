@@ -1,4 +1,4 @@
-exports.run = async(clients,message,args) =>
+exports.run = async(client, message, args) =>
 {   
     const mutedMember = message.guild.roles.find(r => r.name.toLowerCase() === "muted");
     const x = Number(args[1]);

@@ -1,10 +1,21 @@
-exports.run = (client, message, args) => {
+const {removeHp, showHp } = require ("../Utils.js")
+exports.run = async(client, message, args) => {
+  let target = message.mentions.users.first();
+
+ if(await showHp(message.author.id, message.guild.id) <=0){
+  return message.reply('You are dead');
+ }
+ //let smiles = message.channel.guild.emojis[Math.floor(Math.random()* message.channel.guild.emojis.length)]
+ //const smile1 = Math.floor(Math.random()*smiles.length); 
+ //const smile2 = Math.floor(Math.random()*smiles.length);
+ 
+let dmg = Math.floor((Math.random()*4)+1);
+
+
+if (message.mentions.members.size === 0)
+   return message.reply("Choose a target");
+   await removeHp(target.id, message.guild.id, dmg);
+   //:${smiles}:_:${smiles}: ${message.author.username}
+   message.channel.send(` did a ${dmg} damage ${args[0]}, you have ${await showHp(target.id, message.guild.id)} hp left`);
 	
-    let dmg = Math.floor(Math.random()*300);
-	let target = message.mentions.members.first;
-	if (message.mentions.members.size === 0)
-        return message.reply("Укажите пользователя");
-	
-	 message.channel.send(`${message.author.username} наносит вам ${dmg} урона ${args[0]}`);
-		
 }

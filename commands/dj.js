@@ -68,7 +68,7 @@ exports.run = async (client,message,args) => {
 			  collector.on('end',() => {
 				if ((plus.count>minus.count)) {
 					serverQueue.connection.dispatcher.end();
-				} else if (plus.count < minus.count || plus.count === minus.count ){
+				} else if (plus.count < minus.count || plus.count == minus.count ){
 					message.channel.send('Vote failed')
 				} else {
 				  message.channel.send('Vote failed or error occured')

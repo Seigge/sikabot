@@ -1,5 +1,5 @@
-module.exports = (sequelize, DataTypes) =>{
-    return sequelize.define('shop',{
+module.exports = (sequelize, DataTypes) => {
+    return sequelize.define({'Shop', {
         name: {
             type: DataTypes.STRING,
             unique: true,
@@ -7,8 +7,10 @@ module.exports = (sequelize, DataTypes) =>{
         cost: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        }
-    },{
+        },
+    } {
         timestamps: false,
-    })
-}
+    }
+
+    });
+};
