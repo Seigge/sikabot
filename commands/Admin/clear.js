@@ -13,3 +13,16 @@ message.channel.fetchMessages({
  message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
 });
 }
+
+exports.settings = {
+    aliases:['clr']
+}
+exports.help = {
+    name: 'clear',
+    description: 'Clear specified amount of messages from channel, or specified user in this channel',
+    botPermission: 'MANAGE_MESSAGES',
+    userTextPermission: 'MANAGE_MESSAGES',
+    userVoicePermission: '',
+    usage: 'clear <optional - Username otherwise all> amount(up to 50)',
+    example: [ 'clear 20', 'clear @Sike 20' ]
+  };

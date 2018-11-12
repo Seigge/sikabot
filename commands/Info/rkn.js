@@ -14,3 +14,17 @@ exports.run = (client, message, args) => {
     }
 })
 }
+
+exports.settings = {
+	aliases:[''],
+	enabled: true
+}
+exports.help = {
+	name: 'rkn',
+	description: 'Shows amount of blocked sites by russian RosKomNadzor facility',
+	botPermission: '',
+	userTextPermission: '',
+	userVoicePermission: '',
+	usage: 'rkn',
+	example: [ '' ]
+  };

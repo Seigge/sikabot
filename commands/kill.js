@@ -16,6 +16,6 @@ if (message.mentions.members.size === 0)
    return message.reply("Choose a target");
    await removeHp(target.id, message.guild.id, dmg);
    //:${smiles}:_:${smiles}: ${message.author.username}
-   message.channel.send(` did a ${dmg} damage ${args[0]}, you have ${await showHp(target.id, message.guild.id)} hp left`);
+   message.channel.send(`${target.username} takes ${dmg} damage and has only ${await showHp(target.id, message.guild.id)} hp left`);
 	
 }

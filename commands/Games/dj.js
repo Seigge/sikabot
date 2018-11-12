@@ -3,7 +3,6 @@ const Util = require('discord.js');
 const youTube = require('simple-youtube-api');
 
 const ytdl = require('ytdl-core');
-const opus = require('opusscript');
 const ffmpeg   = require('fluent-ffmpeg');
 
 exports.run = async (client,message,args) => {
@@ -166,3 +165,17 @@ exports.run = async (client,message,args) => {
 	}
 	
 }
+
+exports.settings = {
+	aliases:[''],
+	enabled: false
+}
+exports.help = {
+    name: 'dj',
+    description: 'Plays music in specified voice channel',
+    botPermission: 'CONNECT',
+    userTextPermission: 'CONNECT',
+    userVoicePermission: 'CONNECT',
+    usage: 'dj play songname',
+    example: [ 'dj play https://www.youtube.com/watch?v=example','dj play thunder' ]
+  };

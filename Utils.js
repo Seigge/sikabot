@@ -1,14 +1,14 @@
 const { Users } = require('./dbObjects');
 const { Op } = require("sequelize");
 //const {}
-async function addCoin(id, guildId, amount){
+async function addCoin(id, guildId, amount, name){
     try {
     const user = await Users.findOne({ where: {user_id: id, guild_id: guildId }});
       if(user){
         user.balance += Number(amount);
        return user.save();
       }
-      const newUser = await Users.create({user_id: id,  guild_id: guildId, balance: amount, hitpoints: 20 })
+      const newUser = await Users.create({user_id: id,  guild_id: guildId, balance: amount, hitpoints: 20, displayName: name })
     } catch(e){
       console.log(e)
     }
@@ -54,6 +54,8 @@ async function addCoin(id, guildId, amount){
       console.log(e);
     }
   }
+
+  //util func for taking the hp variable from db
   async function showHp(id, guildId){
     try {
       const user = await Users.findOne({ where: {user_id: id, guild_id: guildId }});
@@ -65,6 +67,7 @@ async function addCoin(id, guildId, amount){
     }
   }
 
+// Buy items from the shop db
   async function buyItem(id, guildId, cost ){
       try {
         const user = await Users.findOne({ where: {user_id: id, guild_id: guildId }});
@@ -82,12 +85,29 @@ async function addCoin(id, guildId, amount){
           console.log(e);
       }
   }
+
+  async function findWeight(guildId, amount){
+    var weigtedUsers = await Users.findAll({
+        where: {
+          balance:{
+            [Op.gt]: amount
+          },
+          guild_id: guildId
+        }
+      })
+      return weigtedUsers;
+    }
+ 
+
+
   module.exports = {
     addCoin : addCoin,
     getBalance: getBalance,
     removeHp: removeHp,
     showHp: showHp,
     buyItem: buyItem,
-    setHp: setHp 
+    setHp: setHp,
+    findWeight: findWeight,
+     
 }
     

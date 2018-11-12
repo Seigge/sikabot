@@ -11,3 +11,16 @@ exports.run = (client, message, args) => {
  });
 
 }
+
+exports.settings = {
+    aliases:['ae']
+}
+exports.help = {
+    name: 'AddEmoji',
+    description: 'Add the picture provided with a link as emoji',
+    botPermission: 'MANAGE_EMOJIS',
+    userTextPermission: 'MANAGE_EMOJIS',
+    userVoicePermission: '',
+    usage: 'addemoji <Emoji url>',
+    example: [ 'addemoji https://exampleemoji.com/emoji.jpg' ]
+  };

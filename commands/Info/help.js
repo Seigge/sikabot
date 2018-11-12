@@ -8,14 +8,19 @@ exports.run = (client, message, args) => {
     helpCommands += file.split(".js").join("\n")
 	
  })
- message.reply({embed: {
-        color: 3447003,
-        fields: [{
-         name: "List of all commands",
-         value: ` ${helpCommands}`
-      }]
-	  
-    }})
 })
-
 }
+
+exports.settings = {
+	aliases:[''],
+	enabled: true
+}
+exports.help = {
+	name: 'help',
+	description: 'Show this message',
+	botPermission: '',
+	userTextPermission: '',
+	userVoicePermission: '',
+	usage: 'help',
+	example: [ '' ]
+  };

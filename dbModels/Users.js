@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Users', {
-            user_id: {
+        user_id: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -19,13 +19,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
 
         },
-        level: {
-            type: DataTypes.INTEGER,
-            defaultValue: 1,
-        },
-        current_exp: {
-            type: DataTypes.INTEGER,
-        },
+        displayName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
         
     }, {
             timestamps: false,

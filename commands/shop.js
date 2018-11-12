@@ -3,8 +3,6 @@ exports.run = async(client, message, args) =>{
 
     const target = message.mentions.users.first() || message.author;
 
-   
-
     switch(args[0]){
 
     case 'heal' :
