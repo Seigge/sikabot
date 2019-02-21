@@ -1,5 +1,7 @@
 exports.run = (client, message, args) => {
-	var request = require('request');
+	
+const request = require('request');
+
   request('https://usher2.club/d1_ipblock.json', function (error, response, body) {
 	
     if (!error && response.statusCode == 200) {

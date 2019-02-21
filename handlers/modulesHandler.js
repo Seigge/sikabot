@@ -15,6 +15,10 @@ for(let module of modules){
     filter(file => file.endsWith('.js'));
 
     for (let file of commandFiles) {
+/*        if(!file.settings.enabled){
+            return;
+        }
+*/
         file = file.substr(0, file.length - 3);
         console.log(`Loading ${file} command...\n`);
         

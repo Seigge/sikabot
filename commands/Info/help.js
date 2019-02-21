@@ -1,19 +1,47 @@
-exports.run = (client, message, args) => {
- const fs = require ('fs');
- var helpCommands = '';
- fs.readdir("./commands/",(err, files) => {
-	if (err) return console.error(err);
+exports.run = async (client, message,args) => {
 	
-	files.forEach(file => {
-    helpCommands += file.split(".js").join("\n")
+	if (client.commands.has(args.Command)){
+		let command = args.Command.toLowerCase();
+		command = client.commands.get(command);
+
+   return message.channel.send({embed: {
+			color: 3447003,
+			author: {
+				name: client.user.username,
+				icon_url: client.user.avatarURL
+			},
+			title: command.help.name,
+			description: command.help.description,
+		/*	fields: [{
+					name: 'Usage' ,
+					value: command.help.usage
+				},
+				{
+					name: 'Example' ,
+					value: command.help.example
+				},
+				{
+					name: 'Bot Permissions',
+					value: command.help.botPermission
+				}
+			], */
+			timestamp: new Date(),
+			footer: {
+				icon_url: client.user.avatarURL
+			}
+		}
+	});
+	}
+	return message.channel.send('An error occured.');
+  }
 	
- })
-})
-}
 
 exports.settings = {
 	aliases:[''],
-	enabled: true
+	enabled: true,
+	argsDefinitions: [
+		{name: 'Command', type: String, allias: 'c', defaultOption: true}
+	]
 }
 exports.help = {
 	name: 'help',
