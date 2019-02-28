@@ -10,7 +10,7 @@ exports.run = async(client, message) => {
 
 }
 exports.settings = {
-    aliases:[''],
+    aliases:['r6'],
     enabled:false
 }
 exports.help = {

@@ -167,7 +167,7 @@ exports.run = async (client,message,args) => {
 }
 
 exports.settings = {
-	aliases:[''],
+	aliases:['dj2'],
 	enabled: false
 }
 exports.help = {

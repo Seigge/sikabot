@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
 }
 
 exports.settings = {
-	aliases:[''],
+	aliases:['rt'],
 	enabled: true
 }
 exports.help = {

@@ -37,7 +37,7 @@ exports.run = async (client, message,args) => {
 	
 
 exports.settings = {
-	aliases:[''],
+	aliases:['h'],
 	enabled: true,
 	argsDefinitions: [
 		{name: 'Command', type: String, allias: 'c', defaultOption: true}

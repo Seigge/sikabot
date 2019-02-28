@@ -18,7 +18,7 @@ const request = require('request');
 }
 
 exports.settings = {
-	aliases:[''],
+	aliases:['rkn'],
 	enabled: true
 }
 exports.help = {
