@@ -1,11 +1,14 @@
 exports.run = async(client, message, args) => {
-   let phrase = args.join(" ");
+   let phrase = args.Phrase;
    let percent = (Math.random()*100).toFixed(2);
     message.channel.send(`${phrase} - ${percent}%`)
 }
 
 exports.settings = {
-    aliases:['percent']
+    aliases:['percent'],
+    argsDefinitions: [
+        {name: 'Phrase', type: String, defaultOption: true}
+    ]
 }
 exports.help = {
     name: 'pp',

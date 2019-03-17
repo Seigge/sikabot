@@ -22,5 +22,5 @@ module.exports = async message => {
 
   //  let mdl = cmd.config.module;
 
-    cmd.run(message.client, message, parseArgs(cmd.settings.argsDefinitions, { argv: args, partial:true}));
+    cmd.run(message.client, message, parseArgs(cmd.settings.argsDefinitions || message.args, { argv: args, partial:true}));
 }

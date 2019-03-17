@@ -1,0 +1,7 @@
+{
+  "token": "Your Discord Token",
+  "prefix": "Insert Here Starting Command Symbol(i.e. !)",
+  "ownerID": "Your Discord Bot Owner Id",
+  "YOTUBE_API_KEY": "Your Youtube Api Key"
+}
+

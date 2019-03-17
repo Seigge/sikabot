@@ -2,7 +2,7 @@ const {findWeight} = require ("../../Utils.js")
 
 exports.run = async (client, message, args) => {
 	if(args.length<1)return message.reply('Input phrase');
-	 var phrase = args.join(" ");
+	 var phrase = args.Phrase;
 	 var memberGuild = await findWeight(message.guild.id, 4);
 	     memberGuild = memberGuild.map(m=>m.displayName);
 
@@ -12,7 +12,10 @@ exports.run = async (client, message, args) => {
 }
 
 exports.settings = {
-    aliases:['roll']
+    aliases:['roll'],
+    argsDefinitions: [
+        {name: 'Phrase', type: String, defaultOption: true}
+    ]
 }
 exports.help = {
     name: 'r',
