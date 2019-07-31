@@ -8,7 +8,7 @@ async function addCoin(id, guildId, amount, name){
         user.balance += Number(amount);
        return user.save();
       }
-      const newUser = await Users.create({user_id: id,  guild_id: guildId, balance: amount, hitpoints: 20, displayName: name })
+       await Users.create({user_id: id,  guild_id: guildId, balance: amount, hitpoints: 20, displayName: name })
     } catch(e){
       console.log(e)
     }

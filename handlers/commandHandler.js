@@ -1,6 +1,5 @@
 module.exports = async message => {
     const config = require("../config.json");
-    const parseArgs = require ("command-line-args");
     
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
 
@@ -22,5 +21,5 @@ module.exports = async message => {
 
   //  let mdl = cmd.config.module;
 
-    cmd.run(message.client, message, parseArgs(cmd.settings.argsDefinitions || message.args, { argv: args, partial:true}));
+    cmd.run(message.client, message, args);
 }

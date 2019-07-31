@@ -8,7 +8,7 @@ let Aliases = new Collection();
 let modules = fs.readdirSync('./commands/').filter(file=>fs.statSync(path.join('./commands/',file)).isDirectory())
 
 for(let module of modules){
-    console.log(`Loading ${module} module... \n`);
+    // console.log(`Loading ${module} module... \n`);
 
     let commandFiles = fs.readdirSync(path.resolve(`./commands/${module}`)).
     filter(file => !fs.statSync(path.resolve('./commands/', module, file)).isDirectory()).

@@ -13,7 +13,9 @@ const request = require('request');
     d = new Date(last["x"]*1000);
     message.reply(`Пока заблокированно: ${last["y"].toLocaleString('ru')} (**${result}**) ${difference}`);
     message.reply("Дата обновления списка заблокированных ресурсов: " + d.toLocaleDateString("ru") + " " + d.toLocaleTimeString("ru"));
-    }
+    } else {
+			return message.reply('Произошла ошибка.')
+		}
 })
 }
 
@@ -23,7 +25,7 @@ exports.settings = {
 }
 exports.help = {
 	name: 'rkn',
-	description: 'Shows amount of blocked sites by russian RosKomNadzor facility',
+	description: 'Shows amount of blocked sites by russian RosComNadzor facility',
 	botPermission: '',
 	userTextPermission: '',
 	userVoicePermission: '',

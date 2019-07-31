@@ -3,6 +3,8 @@ const fs = require("fs");
 const { Users } = require('./dbObjects');
 const { Op } = require("sequelize");
 
+const currency = new Discord.Collection();
+
 const client = new Discord.Client();
 
 const config = require("./config.json");

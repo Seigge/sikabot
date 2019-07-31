@@ -1,7 +1,8 @@
 exports.run = async (client, message,args) => {
 	
-	if (client.commands.has(args.Command)){
-		let command = args.Command.toLowerCase();
+	if (client.commands.has(args)){
+		
+		let command = args
 		command = client.commands.get(command);
 
    return message.channel.send({embed: {
@@ -32,16 +33,14 @@ exports.run = async (client, message,args) => {
 		}
 	});
 	}
-	return message.channel.send('An error occured.');
+	return message.channel.send('В разработке.');
   }
 	
 
 exports.settings = {
 	aliases:['h'],
 	enabled: true,
-	argsDefinitions: [
-		{name: 'Command', type: String, allias: 'c', defaultOption: true}
-	]
+	
 }
 exports.help = {
 	name: 'help',

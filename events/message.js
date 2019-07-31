@@ -1,5 +1,5 @@
 module.exports = (client, message) => {
-   const {addCoin } = require("../Utils.js");
+   const { addCoin } = require("../Utils.js");
   
   const handleCommand = require('../handlers/commandHandler');
   
