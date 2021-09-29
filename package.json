@@ -19,7 +19,7 @@
 	"extend": "^3.0.2",
     "ffmpeg-binaries": "^3.2.2-3",
     "fluent-ffmpeg": "^2.1.2",
-    "i": "^0.3.6",
+    "i": "^0.3.7",
     "opusscript": "0.0.6",
     "request": "^2.85.0",
     "sequelize": "^5.15.1",
